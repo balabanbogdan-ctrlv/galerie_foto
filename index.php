@@ -31,6 +31,7 @@ $mesaj = $_GET['mesaj'] ?? '';
 
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,23 +64,14 @@ $mesaj = $_GET['mesaj'] ?? '';
         <section class="mb-10 rounded-xl bg-white p-6 shadow">
             <h2 class="mb-4 text-xl font-bold">Încarcă o imagine</h2>
 
-            <form action="incarca.php"
-                  method="POST"
-                  enctype="multipart/form-data"
-                  class="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <form action="incarca.php" method="POST" enctype="multipart/form-data"
+                class="flex flex-col gap-4 sm:flex-row sm:items-center">
 
-                <input
-                    type="file"
-                    name="imagine"
-                    accept=".jpg,.jpeg,.png,.gif"
-                    required
-                    class="w-full rounded-lg border p-3"
-                >
+                <input type="file" name="imagine" accept=".jpg,.jpeg,.png,.gif" required
+                    class="w-full rounded-lg border p-3">
 
-                <button
-                    type="submit"
-                    class="rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white hover:bg-indigo-700"
-                >
+                <button type="submit"
+                    class="rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white hover:bg-indigo-700">
                     Încarcă imaginea
                 </button>
             </form>
@@ -118,11 +110,8 @@ $mesaj = $_GET['mesaj'] ?? '';
                         <div class="overflow-hidden rounded-xl bg-white shadow">
 
                             <a href="vizualizare.php?imagine=<?= rawurlencode($imagine) ?>">
-                                <img
-                                    src="miniaturi/<?= rawurlencode($imagine) ?>"
-                                    alt="Fotografie din galerie"
-                                    class="h-56 w-full object-cover"
-                                >
+                                <img src="miniaturi/<?= rawurlencode($imagine) ?>" alt="Fotografie din galerie"
+                                    class="h-56 w-full object-cover">
                             </a>
 
                             <div class="p-4">
@@ -133,31 +122,25 @@ $mesaj = $_GET['mesaj'] ?? '';
                                 <!-- Butoanele pentru gestionarea imaginii. -->
                                 <div class="flex flex-wrap gap-2">
 
-                                    <a
-                                        href="vizualizare.php?imagine=<?= rawurlencode($imagine) ?>"
-                                        class="rounded bg-indigo-600 px-3 py-2 text-sm text-white hover:bg-indigo-700"
-                                    >
+                                    <a href="vizualizare.php?imagine=<?= rawurlencode($imagine) ?>"
+                                        class="rounded bg-indigo-600 px-3 py-2 text-sm text-white hover:bg-indigo-700">
                                         Vizualizare
                                     </a>
 
-                                    <a
-                                        href="descarca.php?imagine=<?= rawurlencode($imagine) ?>"
-                                        class="rounded bg-emerald-600 px-3 py-2 text-sm text-white hover:bg-emerald-700"
-                                    >
+                                    <a href="descarca.php?imagine=<?= rawurlencode($imagine) ?>"
+                                        class="rounded bg-emerald-600 px-3 py-2 text-sm text-white hover:bg-emerald-700">
                                         Descarcă
                                     </a>
 
                                     <!-- Ștergerea se face printr-un formular POST. -->
                                     <form action="sterge.php" method="POST"
-                                          onsubmit="return confirm('Sigur dorești să ștergi imaginea?');">
+                                        onsubmit="return confirm('Sigur dorești să ștergi imaginea?');">
 
                                         <input type="hidden" name="imagine"
-                                               value="<?= htmlspecialchars($imagine, ENT_QUOTES, 'UTF-8') ?>">
+                                            value="<?= htmlspecialchars($imagine, ENT_QUOTES, 'UTF-8') ?>">
 
-                                        <button
-                                            type="submit"
-                                            class="rounded bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700"
-                                        >
+                                        <button type="submit"
+                                            class="rounded bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700">
                                             Șterge
                                         </button>
                                     </form>
@@ -173,10 +156,6 @@ $mesaj = $_GET['mesaj'] ?? '';
             <?php endif; ?>
         </section>
     </main>
-
-    <footer class="mt-10 bg-slate-800 p-5 text-center text-white">
-        GalerieFoto — Proiect realizat în PHP și Tailwind CSS
-    </footer>
-
 </body>
+
 </html>
