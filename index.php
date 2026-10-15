@@ -1,26 +1,38 @@
 <?php
+// 1. Definim căile absolute către directoarele proiectului (folderul de imagini originale și folderul de miniaturi).
 $directorGalerie = __DIR__ . '/galerie';
 $directorMiniaturi = __DIR__ . '/miniaturi';
 
+// 2. Verificăm dacă directorul pentru galeria originală există pe disc; dacă nu, îl creăm automat cu permisiuni de citire/scriere (0755).
 if (!is_dir($directorGalerie)) {
     mkdir($directorGalerie, 0755, true);
 }
 
+// 3. Verificăm dacă directorul pentru miniaturi există pe disc; dacă nu, îl creăm automat.
 if (!is_dir($directorMiniaturi)) {
     mkdir($directorMiniaturi, 0755, true);
 }
 
+// 4. Preluăm mesajul transmis prin parametrul URL 'mesaj' (de exemplu după o încărcare sau ștergere). 
+// Operatorul null coalescing (??) asigură o valoare goală implicită dacă parametrul nu există în URL.
 $mesaj = $_GET['mesaj'] ?? '';
 
+// 5. Citim toate fișierele și subdirectoarele existente în directorul galeriei într-un tablou (array).
 $imagini = scandir($directorGalerie);
+
+// 6. Eliminăm referințele speciale de sistem de fișiere ('.' reprezentând directorul curent și '..' reprezentând directorul părinte).
 $imagini = array_diff($imagini, ['.', '..']);
 
+// 7. Filtram fișierele citite pentru a le păstra doar pe cele care sunt imagini valide.
 $imagini = array_filter($imagini, function ($imagine) {
+    // Extragerea și convertirea extensiei fișierului în litere mici (ex: .JPG devine .jpg).
     $extensie = strtolower(pathinfo($imagine, PATHINFO_EXTENSION));
 
+    // Verificăm dacă extensia extrasă se află în lista de extensii de imagini permise.
     return in_array($extensie, ['jpg', 'jpeg', 'png', 'gif']);
 });
 
+// 8. Reindexăm tabloul de imagini de la 0, 1, 2... deoarece funcțiile array_diff și array_filter păstrează cheile originale.
 $imagini = array_values($imagini);
 ?>
 
