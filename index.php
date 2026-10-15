@@ -32,7 +32,6 @@ $imagini = array_values($imagini);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GalerieFoto</title>
 
-    <!-- Tailwind CSS v4 prin CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
