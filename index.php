@@ -144,4 +144,5 @@ $imagini = array_values($imagini);
         </section>
     </main>
 </body>
+
 </html>
