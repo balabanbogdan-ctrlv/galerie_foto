@@ -25,6 +25,7 @@ if (!isset($_FILES['imagine'])) {
 
 $fisier = $_FILES['imagine'];
 
+
 // 5. Verificăm erorile de încărcare PHP.
 if ($fisier['error'] !== UPLOAD_ERR_OK) {
     $erori = [

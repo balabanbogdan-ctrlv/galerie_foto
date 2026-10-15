@@ -29,7 +29,7 @@ if (!is_file($cale)) {
     <title>Vizualizare imagine</title>
 
     <!-- Folosim Tailwind CSS pentru design. -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="min-h-screen bg-slate-100 p-4">
